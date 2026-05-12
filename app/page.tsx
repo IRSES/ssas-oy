@@ -6,6 +6,8 @@ import CyberCard from './CyberCard';
 import Infographic from './Infographic';
 import Akkreditointi from './Akkreditointi';
 import Testimonials from './Testimonials';
+import Contact from './Contact';
+import Map from './Map';
 
 export default function Home() {
   return (
@@ -110,6 +112,8 @@ export default function Home() {
         <Infographic />
         <Akkreditointi />
         <Testimonials />
+        <Contact />
+        <Map />
       </div>
     </main>
   );
