@@ -2,6 +2,9 @@
 import Spline from '@splinetool/react-spline';
 import Image from 'next/image';
 
+import CyberCard from './CyberCard';
+import Infographic from './Infographic';
+
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-[#0a0a0c] text-white overflow-x-hidden font-sans">
@@ -58,14 +61,14 @@ export default function Home() {
         <section className="h-[calc(100vh-150px)] flex flex-col justify-center px-6 md:px-16">
           <div className="max-w-5xl">
             {/* Главный заголовок */}
-            <h1 className="text-6xl md:text-7xl font-extrabold mb-8 leading-[1.05] tracking-tight drop-shadow-lg">
+            <h1 className="text-6xl md:text-6xl font-extrabold mb-6 leading-[1.05] tracking-tight drop-shadow-lg">
               Ainutlaatuisia ratkaisuja <br /> 
               <span className="text-[#3be8e8]">menestykseesi.</span>
             </h1>
             
             {/* Описание */}
-            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl leading-relaxed drop-shadow-md">
-              Tarjoamme nopeaa ja luotettavaa muuttopalvelua kaikkiin tarpeisiin.
+            <p className="text-xl md:text-1.5xl text-gray-300 mb-8 max-w-3xl leading-relaxed drop-shadow-md">
+              Tarjoamme nopeaa ja luotettavaa muuttopalvelua kaikkiin tarpeisiin. Ota yhteyttä, niin hoidan muuttonne vaivattomasti ja ammattitaitoisesti. Yritys on perustettu 2021.
             </p>
 
             {/* Кнопка действия */}
@@ -76,11 +79,33 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Остальные секции сайта будут идти ниже */}
-        <section className="py-24 bg-[#0a0a0c] px-6 md:px-16 border-t border-white/5">
-            <h2 className="text-4xl font-bold mb-10 text-center">Miten toimimme</h2>
-            {/* Твой блок с карточками может быть здесь */}
+        <section className="relative z-10 py-24 bg-[#0a0a0c]/50 backdrop-blur-md border-t border-white/5">
+          <div className="container mx-auto px-6 md:px-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-20 text-center tracking-tight">
+              Miksi työskennellä kanssani <br></br> <span className="text-[#3be8e8]">SSAS OY:n muuttopalvelu - luotettava valinta</span>
+            </h2>
+
+            {/* Сетка карточек: 1 колонка на мобилках, 3 на десктопе */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 justify-items-center items-center">
+              <CyberCard 
+                title="Hoidamme muuttopalvelu turvallisesti ja tehokkaasti. Pitkä kokemus alalla ja ammattitaitoiset muuttomiehemme ovat takuu onnistuneelle lopputulokselle." 
+                subtitle="Kokemukseni" 
+                highlight="alalta" 
+              />
+              <CyberCard 
+                title="Minulle on tärkeää, että asiakkaat ovat tyytyväisiä palveluihini. Pyrin aina ylittämään odotukset ja huolehtimaan asiakkaiden tarpeista parhaalla mahdollisella tavalla." 
+                subtitle="Asiakaslähtöinen" 
+                highlight="palveluasenne" 
+              />
+              <CyberCard 
+                title="Tarjoan korkealaatuista muuttopalvelua kilpailukykyiseen hintaan. Haluan varmistaa, että palveluni ovat saatavilla laadukkaasti ja edullisesti kaikille asiakkaille." 
+                subtitle="Kilpailukykyinen" 
+                highlight="hinnoittelu" 
+              />
+            </div>
+          </div>
         </section>
+        <Infographic />
       </div>
     </main>
   );

@@ -24,3 +24,250 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* --- КИБЕР КАРТОЧКА (ФИНАЛЬНАЯ ВЕРСИЯ) --- */
+.cyber-card-wrapper {
+  position: relative;
+  /* Увеличиваем до размеров как на макете */
+  width: 300px; 
+  height: 400px;
+  transition: 200ms;
+  z-index: 20;
+}
+
+.noselect {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#card {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  transition: 700ms;
+  /* Градиент стал чуть глубже */
+  background: linear-gradient(45deg, #0f0f12, #1a1a21);
+  /* Рамка теперь более выраженная */
+  border: 1px solid rgba(59, 232, 232, 0.3);
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+}
+
+.card-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Центрируем основной заголовок ровно по середине */
+.title {
+  opacity: 0;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: absolute;
+  font-size: 19px;
+  font-weight: 750;
+  letter-spacing: 1.4px;
+  text-align: center;
+  width: 90%;
+  /* Выравнивание по центру */  
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(45deg, #3be8e8, #1a73e8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+  display: block;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  word-wrap: break-word;
+}
+
+/* Делаем нижний текст более аккуратным */
+.subtitle {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+.highlight {
+  color: #3be8e8;
+  display: block;
+  font-weight: 800;
+  font-size: 14px;
+  margin-top: 5px;
+  filter: drop-shadow(0 0 8px rgba(59, 232, 232, 0.4));
+}
+
+#prompt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #3be8e8;
+  font-weight: bold;
+  letter-spacing: 4px;
+  transition: 0.3s;
+  opacity: 0.7; 
+  font-size: 20px;
+}
+
+/* 3D зоны управления */
+.canvas {
+  perspective: 1200px;
+  inset: 0;
+  z-index: 200;
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.tracker {
+  width: 100%;
+  height: 100%;
+  z-index: 300;
+}
+
+/* Наклоны */
+.tr-1:hover ~ #card { transform: rotateX(15deg) rotateY(-15deg); }
+.tr-3:hover ~ #card { transform: rotateX(15deg) rotateY(0deg); }
+.tr-5:hover ~ #card { transform: rotateX(15deg) rotateY(15deg); }
+.tr-13:hover ~ #card { transform: rotateX(0deg) rotateY(0deg); }
+.tr-21:hover ~ #card { transform: rotateX(-15deg) rotateY(-15deg); }
+.tr-25:hover ~ #card { transform: rotateX(-15deg) rotateY(15deg); }
+
+.tracker:hover ~ #card .title {
+  opacity: 1;
+  transform: translate(-50%, -60%); /* Легкое движение вверх при наведении */
+}
+
+.tracker:hover ~ #card #prompt {
+  opacity: 0;
+}
+
+/* Уголки */
+.corner-elements span {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 1.5px solid rgba(59, 232, 232, 0.4);
+  transition: 0.3s;
+}
+
+.tracker:hover ~ #card .corner-elements span {
+  border-color: rgba(59, 232, 232, 0.8);
+  box-shadow: 0 0 10px rgba(59, 232, 232, 0.3);
+}
+
+.corner-elements span:nth-child(1) { top: 20px; left: 20px; border-right: 0; border-bottom: 0; }
+.corner-elements span:nth-child(2) { top: 20px; right: 20px; border-left: 0; border-bottom: 0; }
+.corner-elements span:nth-child(3) { bottom: 20px; left: 20px; border-right: 0; border-top: 0; }
+.corner-elements span:nth-child(4) { bottom: 20px; right: 20px; border-left: 0; border-top: 0; }
+
+/* Линия сканирования */
+.scan-line {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(59, 232, 232, 0.08), transparent);
+  animation: scanMove 4s linear infinite;
+}
+
+@keyframes scanMove {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+
+
+
+
+/* Стили для инфографики */
+/* --- ОБНОВЛЕННАЯ ИНФОГРАФИКА --- */
+.number-circle-custom {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #16161a 0%, #0a0a0c 100%);
+  box-shadow: 
+    -5px -5px 15px rgba(255, 255, 255, 0.02),
+    5px 5px 15px rgba(0, 0, 0, 0.5),
+    inset 2px 2px 5px rgba(59, 232, 232, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 800;
+  color: #3be8e8;
+  border: 1px solid rgba(59, 232, 232, 0.1);
+  flex-shrink: 0;
+  transition: 0.3s;
+}
+
+.info-item-custom:hover .number-circle-custom {
+  color: #fff;
+  border-color: #3be8e8;
+  box-shadow: 0 0 20px rgba(59, 232, 232, 0.2);
+}
+
+.gauge-main {
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: #0d0d0f;
+  box-shadow: 
+    -15px -15px 40px rgba(255, 255, 255, 0.02),
+    15px 15px 40px rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.gauge-inner-content {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #16161a, #0a0a0c);
+  box-shadow: 
+    inset 5px 5px 15px rgba(0, 0, 0, 0.6),
+    inset -5px -5px 15px rgba(255, 255, 255, 0.02);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.gauge-progress-anim {
+  transition: stroke-dashoffset 2s ease-out;
+  stroke-dashoffset: 660; /* Начальное значение */
+  animation: fillGauge 2.5s forwards ease-in-out;
+}
+
+@keyframes fillGauge {
+  to { stroke-dashoffset: 150; } /* Конечное значение заполнения */
+}
+
+.gauge-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  background: #3be8e8;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #3be8e8;
+  z-index: 5;
+  transform: translate(-50%, -50%) rotate(90deg) translateX(140px); /* Позиция в конце полоски */
+}
