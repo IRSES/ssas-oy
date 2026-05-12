@@ -60,7 +60,7 @@ export default function Infographic() {
             <div className="gauge-inner-content">
               <span className="text-gray-500 text-xs uppercase tracking-[3px] mb-2">Suoritetut muutot</span>
               <span className="text-white text-6xl font-black tracking-tighter tabular-nums">
-                1250+
+                800+
               </span>
               <span className="text-[#3be8e8] text-[10px] mt-4 font-bold tracking-widest uppercase">
                 Tyytyväistä asiakasta

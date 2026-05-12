@@ -4,6 +4,8 @@ import Image from 'next/image';
 
 import CyberCard from './CyberCard';
 import Infographic from './Infographic';
+import Akkreditointi from './Akkreditointi';
+import Testimonials from './Testimonials';
 
 export default function Home() {
   return (
@@ -106,6 +108,8 @@ export default function Home() {
           </div>
         </section>
         <Infographic />
+        <Akkreditointi />
+        <Testimonials />
       </div>
     </main>
   );

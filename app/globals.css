@@ -189,9 +189,6 @@ body {
 }
 
 
-
-
-
 /* Стили для инфографики */
 /* --- ОБНОВЛЕННАЯ ИНФОГРАФИКА --- */
 .number-circle-custom {
@@ -256,18 +253,51 @@ body {
 }
 
 @keyframes fillGauge {
-  to { stroke-dashoffset: 150; } /* Конечное значение заполнения */
+  to { stroke-dashoffset: 0; } /* Конечное значение заполнения */
 }
 
 .gauge-dot {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   background: #3be8e8;
   border-radius: 50%;
   box-shadow: 0 0 15px #3be8e8;
   z-index: 5;
-  transform: translate(-50%, -50%) rotate(90deg) translateX(140px); /* Позиция в конце полоски */
+  transform: translate(-50%, -50%) rotate(136deg) translateX(144px); /* Позиция в конце полоски */
+}
+
+
+
+/* --- PRICING SECTION --- */
+.pricing-card {
+  background: linear-gradient(145deg, #111114, #0a0a0c);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 40px;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+  box-shadow: 
+    10px 10px 20px rgba(0, 0, 0, 0.4),
+    -5px -5px 15px rgba(255, 255, 255, 0.01);
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(59, 232, 232, 0.3);
+  box-shadow: 
+    20px 20px 40px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(59, 232, 232, 0.05);
+}
+
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 232, 232, 0.2), transparent);
 }
