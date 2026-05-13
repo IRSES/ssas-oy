@@ -2,11 +2,12 @@
 import Spline from '@splinetool/react-spline';
 import Image from 'next/image';
 
+import Link from 'next/link';
 import CyberCard from './CyberCard';
 import Infographic from './Infographic';
 import Akkreditointi from './Akkreditointi';
 import Testimonials from './Testimonials';
-import Contact from './Contact';
+import Contact from './Contact';  
 import Map from './Map';
 
 export default function Home() {
@@ -42,22 +43,15 @@ export default function Home() {
 
           {/* Правая часть: Меню */}
           <nav className="flex items-center gap-2 md:gap-6 text-sm font-medium text-gray-200">
-            <a href="#" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Koti</a>
-            <a href="#" className="hover:text-white transition">Yritys</a>
+            <Link href="/" className="text-[#3be8e8]">Koti</Link>
+            <Link href="/yritys" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Yritys</Link>
             
-            {/* Меню с выпадающим списком */}
-            <div className="relative group flex items-center gap-1.5 cursor-pointer">
-              <span>Kodinkoneet</span>
-              <span className="text-xs group-hover:rotate-180 transition-transform">▼</span>
-            </div>
-
-            <a href="#" className="hover:text-white transition">Kodinkoneet Savonlinna</a>
-            <a href="#" className="hover:text-white transition">Huonekalut</a>
-            
-            <div className="relative group flex items-center gap-1.5 cursor-pointer">
-              <span>Lisää</span>
-              <span className="text-xs group-hover:rotate-180 transition-transform">▼</span>
-            </div>
+            <a href="#" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Kodinkoneet Vaajakoski</a>
+            <a href="#" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Kodinkoneet Savonlinna</a>
+            <a href="#" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Huonekalut</a>
+            <Link href="/muuttopalvelu" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Muuttopalvelu</Link>
+            <a href="#" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Projektit</a>
+            <a href="#" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Yhteystiedot</a>
           </nav>
         </header>
 
