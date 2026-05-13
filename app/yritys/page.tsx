@@ -27,7 +27,7 @@ export default function YritysPage() {
                         <a href="#" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Kodinkoneet Savonlinna</a>
                         <a href="#" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Huonekalut</a>
                         <Link href="/muuttopalvelu" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Muuttopalvelu</Link>
-                        <a href="#" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Projektit</a>
+                        <Link href="/projektit" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Projektit</Link>
                         <a href="#" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Yhteystiedot</a>
                     </nav>
                 </header>
