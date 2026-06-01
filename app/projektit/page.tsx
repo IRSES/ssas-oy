@@ -64,7 +64,7 @@ export default function Projektit() {
                     <a href="#" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Huonekalut</a>
                     <Link href="/muuttopalvelu" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Muuttopalvelu</Link>
                     <Link href="/projektit" className="text-[#3be8e8]">Projektit</Link>
-                    <a href="#" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Yhteystiedot</a>
+                    <Link href="/yhteystiedot" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Yhteystiedot</Link>
                 </nav>
             </header>
 
