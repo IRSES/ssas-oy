@@ -59,7 +59,7 @@ export default function Projektit() {
                 <nav className="flex items-center gap-2 md:gap-6 text-sm font-medium text-gray-200">
                     <Link href="/" className="hover:text-[#3be8e8] transition px-2 py-1">Koti</Link>
                     <Link href="/yritys" className="hover:text-[#3be8e8] transition px-2 py-1">Yritys</Link>
-                    <a href="#" className="hover:text-[#3be8e8] transition px-2 py-1">Kodinkoneet Vaajakoski</a>
+                    <Link href="/kodinkoneet-vaajakoski" className="hover:text-[#3be8e8] transition px-2 py-1">Kodinkoneet Vaajakoski</Link>
                     <Link href="/kodinkoneet" className="hover:text-[#3be8e8] transition px-2 py-1">Kodinkoneet Savonlinna</Link>
                     <Link href="/huonekalut" className="hover:text-[#3be8e8] transition px-2 py-1">Huonekalut</Link>
                     <Link href="/muuttopalvelu" className="hover:text-[#3be8e8] transition px-2 py-1">Muuttopalvelu</Link>
