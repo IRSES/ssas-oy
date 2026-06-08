@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 // Точные категории из технического задания
 const CATEGORIES = [
-    "Kaikki", "Pöydät", "Sohvat", "Puutarhatuolit", "Parveketuolit", 
+    "Kaikki", "Pöydät", "Sohvat", "Puutarhatuolit", "Parveketuolit",
     "Jakkarat", "Lipastot", "Nojatuolit", "Työpöydät", "Hyllyköt", "Laatikostot"
 ];
 
@@ -46,12 +46,14 @@ export default function Huonekalut() {
                     <div className="flex items-center">
                         <Image src="/logo_main.png" alt="Ssas oy Logo" width={150} height={50} priority className="object-contain" />
                     </div>
-                    <nav className="hidden lg:flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest">
+                    <nav className="flex items-center gap-2 md:gap-6 text-sm font-medium text-gray-200">
                         <Link href="/" className="hover:text-[#3be8e8] transition px-2 py-1">Koti</Link>
                         <Link href="/yritys" className="hover:text-[#3be8e8] transition px-2 py-1">Yritys</Link>
+                        <a href="#" className="hover:text-[#3be8e8] transition px-2 py-1">Kodinkoneet Vaajakoski</a>
+                        <Link href="/kodinkoneet" className="hover:text-[#3be8e8] transition px-2 py-1">Kodinkoneet Savonlinna</Link>
+                        <Link href="/huonekalut" className="text-[#3be8e8] border-b-2 border-[#3be8e8] px-2 py-1">Huonekalut</Link>
                         <Link href="/muuttopalvelu" className="hover:text-[#3be8e8] transition px-2 py-1">Muuttopalvelu</Link>
                         <Link href="/projektit" className="hover:text-[#3be8e8] transition px-2 py-1">Projektit</Link>
-                        <Link href="/huonekalut" className="text-[#3be8e8] border-b-2 border-[#3be8e8] px-2 py-1">Huonekalut</Link>
                         <Link href="/yhteystiedot" className="hover:text-[#3be8e8] transition px-2 py-1">Yhteystiedot</Link>
                     </nav>
                 </header>
@@ -63,7 +65,7 @@ export default function Huonekalut() {
                             Myyntitilat & <span className="text-[#3be8e8]">Huonekalut</span>
                         </h1>
                         <p className="text-gray-300 text-xs md:text-sm leading-relaxed max-w-2xl">
-                            Myymälämme sijaitsee <span className="text-white font-semibold">Vaajakoskentie 123</span> toimitiloissa, 
+                            Myymälämme sijaitsee <span className="text-white font-semibold">Vaajakoskentie 123</span> toimitiloissa,
                             josta meiltä löytyy eri valikoima erilaisia käytettyjä huonekaluja. Kaikki myytävät tuotteet ovat nähtävillä myyntitiloissamme.
                         </p>
                     </div>
@@ -76,11 +78,10 @@ export default function Huonekalut() {
                             <button
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
-                                className={`px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all border ${
-                                    selectedCategory === category
+                                className={`px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all border ${selectedCategory === category
                                         ? 'bg-[#3be8e8] text-black border-[#3be8e8] shadow-[0_0_15px_rgba(59,232,232,0.2)]'
                                         : 'bg-white/5 border-white/10 text-gray-400 hover:text-white hover:border-white/20'
-                                }`}
+                                    }`}
                             >
                                 {category}
                             </button>
@@ -97,22 +98,22 @@ export default function Huonekalut() {
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             {filteredProducts.map((product) => (
-                                <div 
+                                <div
                                     key={product.id}
                                     className="group bg-[#0d0d0f]/80 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-3xl flex flex-col transition-all hover:border-[#3be8e8]/30 duration-300"
                                 >
                                     {/* Изображение товара */}
                                     <div className="relative aspect-[4/3] w-full bg-white/5 border-b border-white/5 overflow-hidden">
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
-                                        
+
                                         {/* Ценник */}
                                         <div className="absolute top-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 px-2 py-1 rounded-md text-[10px] font-black text-[#3be8e8] z-20">
                                             {product.price}
                                         </div>
 
                                         {/* Локальная картинка из папки public */}
-                                        <img 
-                                            src={product.imageUrl} 
+                                        <img
+                                            src={product.imageUrl}
                                             alt={product.title}
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                             loading="lazy"
@@ -130,9 +131,9 @@ export default function Huonekalut() {
                                         <p className="text-[11px] text-gray-400 line-clamp-3 leading-normal flex-1 whitespace-pre-wrap">
                                             {product.description}
                                         </p>
-                                        
+
                                         {/* Кнопка перехода на Tori */}
-                                        <a 
+                                        <a
                                             href={product.toriUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"

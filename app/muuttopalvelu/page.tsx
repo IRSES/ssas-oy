@@ -50,15 +50,15 @@ export default function Muuttopalvelu() {
                         />
                     </a>
                 </div>
-                <nav className="flex items-center gap-6 text-sm font-medium">
-                    <Link href="/" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Koti</Link>
-                    <Link href="/yritys" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Yritys</Link>
-                    <a href="#" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Kodinkoneet Vaajakoski</a>
-                    <a href="#" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Kodinkoneet Savonlinna</a>
-                    <a href="#" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Huonekalut</a>
-                    <Link href="/muuttopalvelu" className="text-[#3be8e8]">Muuttopalvelu</Link>
-                    <Link href="/projektit" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Projektit</Link>
-                    <Link href="/yhteystiedot" className="bg-gray-700/50 px-4 py-1.5 rounded-md hover:bg-gray-700 transition">Yhteystiedot</Link>
+                <nav className="flex items-center gap-2 md:gap-6 text-sm font-medium text-gray-200">
+                    <Link href="/" className="hover:text-[#3be8e8] transition px-2 py-1">Koti</Link>
+                    <Link href="/yritys" className="hover:text-[#3be8e8] transition px-2 py-1">Yritys</Link>
+                    <a href="#" className="hover:text-[#3be8e8] transition px-2 py-1">Kodinkoneet Vaajakoski</a>
+                    <Link href="/kodinkoneet" className="hover:text-[#3be8e8] transition px-2 py-1">Kodinkoneet Savonlinna</Link>
+                    <Link href="/huonekalut" className="hover:text-[#3be8e8] transition px-2 py-1">Huonekalut</Link>
+                    <Link href="/muuttopalvelu" className="text-[#3be8e8] border-b-2 border-[#3be8e8] px-2 py-1">Muuttopalvelu</Link>
+                    <Link href="/projektit" className="hover:text-[#3be8e8] transition px-2 py-1">Projektit</Link>
+                    <Link href="/yhteystiedot" className="hover:text-[#3be8e8] transition px-2 py-1">Yhteystiedot</Link>
                 </nav>
             </header>
 

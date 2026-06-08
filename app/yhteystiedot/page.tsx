@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function Yhteystiedot() {
     return (
         <main className="relative min-h-screen bg-[#0a0a0c] text-white overflow-x-hidden font-sans">
-            
+
             {/* --- ЕДИНСТВЕННЫЙ РОБОТ/ГОРОД НА ЗАДНЕМ ФОНЕ --- */}
             <div className="fixed inset-0 z-0">
                 <Spline scene="https://prod.spline.design/0tYCUPl0xm6yi-zs/scene.splinecode" />
@@ -27,19 +27,22 @@ export default function Yhteystiedot() {
                             className="object-contain"
                         />
                     </div>
-                    <nav className="hidden lg:flex items-center gap-4 text-xs font-bold uppercase tracking-widest">
-                        <Link href="/" className="hover:text-[#3be8e8] transition px-3 py-1">Koti</Link>
-                        <Link href="/yritys" className="hover:text-[#3be8e8] transition px-3 py-1">Yritys</Link>
-                        <Link href="/muuttopalvelu" className="hover:text-[#3be8e8] transition px-3 py-1">Muuttopalvelu</Link>
-                        <Link href="/projektit" className="hover:text-[#3be8e8] transition px-3 py-1">Projektit</Link>
-                        <Link href="/yhteystiedot" className="text-[#3be8e8] border-b-2 border-[#3be8e8] px-3 py-1">Yhteystiedot</Link>
+                    <nav className="flex items-center gap-2 md:gap-6 text-sm font-medium text-gray-200">
+                        <Link href="/" className="hover:text-[#3be8e8] transition px-2 py-1">Koti</Link>
+                        <Link href="/yritys" className="hover:text-[#3be8e8] transition px-2 py-1">Yritys</Link>
+                        <a href="#" className="hover:text-[#3be8e8] transition px-2 py-1">Kodinkoneet Vaajakoski</a>
+                        <Link href="/kodinkoneet" className="hover:text-[#3be8e8] transition px-2 py-1">Kodinkoneet Savonlinna</Link>
+                        <Link href="/huonekalut" className="hover:text-[#3be8e8] transition px-2 py-1">Huonekalut</Link>
+                        <Link href="/muuttopalvelu" className="hover:text-[#3be8e8] transition px-2 py-1">Muuttopalvelu</Link>
+                        <Link href="/projektit" className="hover:text-[#3be8e8] transition px-2 py-1">Projektit</Link>
+                        <Link href="/yhteystiedot" className="text-[#3be8e8] border-b-2 border-[#3be8e8] px-2 py-1">Yhteystiedot</Link>
                     </nav>
                 </header>
 
                 {/* КОНТЕНТ */}
                 <section className="container mx-auto px-6 py-12 md:py-24">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-                        
+
                         {/* ИНФОРМАЦИЯ (ЛЕВО) */}
                         <div className="space-y-12 bg-black/30 p-10 rounded-3xl border border-white/10 backdrop-blur-xl shadow-2xl">
                             <div>
@@ -70,13 +73,13 @@ export default function Yhteystiedot() {
                         <div className="relative group">
                             {/* Декоративное свечение за формой */}
                             <div className="absolute -inset-1 bg-gradient-to-r from-[#3be8e8]/20 to-[#1a73e8]/20 rounded-3xl blur-xl opacity-50"></div>
-                            
+
                             <form className="relative bg-[#0d0d0f]/80 border border-white/10 p-8 md:p-12 rounded-3xl backdrop-blur-3xl space-y-6">
                                 <div className="mb-8 text-center lg:text-left">
                                     <h2 className="text-4xl font-black uppercase tracking-tighter">Ota <span className="text-[#3be8e8]">yhteyttä</span></h2>
                                     <p className="text-gray-400 text-sm mt-2">Täytä lomake ja vastaamme sinulle mahdollisimman pian.</p>
                                 </div>
-                                
+
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <input type="text" placeholder="Etu- ja sukunimi *" className="bg-white/5 border border-white/10 px-5 py-4 rounded-xl focus:border-[#3be8e8] outline-none transition-all placeholder:text-gray-600" required />
                                     <input type="email" placeholder="Email *" className="bg-white/5 border border-white/10 px-5 py-4 rounded-xl focus:border-[#3be8e8] outline-none transition-all placeholder:text-gray-600" required />
@@ -88,7 +91,7 @@ export default function Yhteystiedot() {
                                 </div>
 
                                 <input type="text" placeholder="Kaupunki *" className="w-full bg-white/5 border border-white/10 px-5 py-4 rounded-xl focus:border-[#3be8e8] outline-none transition-all placeholder:text-gray-600" required />
-                                
+
                                 <textarea placeholder="Viesti *" rows={5} className="w-full bg-white/5 border border-white/10 px-5 py-4 rounded-xl focus:border-[#3be8e8] outline-none transition-all placeholder:text-gray-600 resize-none" required></textarea>
 
                                 <div className="flex items-center gap-3 py-2">
