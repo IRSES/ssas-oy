@@ -49,24 +49,33 @@ export default function YritysPage() {
                             </p>
                         </div>
 
-                        {/* Декоративный блок / Изображение главы компании */}
+                        {/* Декоративный блок / Изображение главы компании с 3D-эффектом */}
                         <div className="relative group">
                             {/* Эффект неонового свечения вокруг рамки */}
-                            <div className="absolute -inset-1 bg-gradient-to-r from-[#3be8e8] to-[#1a73e8] rounded-2xl blur opacity-20 group-hover:opacity-60 transition duration-1000"></div>
+                            <div className="absolute -inset-1 bg-gradient-to-r from-[#3be8e8] to-[#1a73e8] rounded-2xl blur opacity-20 group-hover:opacity-60 transition duration-1000 z-0"></div>
 
-                            <div className="relative bg-[#0d0d0f] border border-white/10 rounded-2xl overflow-hidden aspect-square">
-                                {/* Само изображение */}
+                            {/* РОДИТЕЛЬСКИЙ КОНТЕЙНЕР: теперь БЕЗ overflow-hidden, чтобы картинка могла выходить за рамки */}
+                            <div className="relative border border-white/10 rounded-2xl aspect-square flex items-end justify-center bg-[#0d0d0f]">
+
+                                {/* ТЕМНЫЙ ФОН С ОГРАНИЧЕНИЕМ (overflow-hidden): нужен, чтобы нижняя часть фото и градиент не вылезали снизу */}
+                                <div className="absolute inset-0 rounded-2xl overflow-hidden z-10">
+                                    {/* Тот самый градиентный слой для читаемости текста */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 z-20"></div>
+                                </div>
+
+                                {/* САМО ИЗОБРАЖЕНИЕ: вынесено на слой выше (z-20) и может свободно вылезать за границы вверх и в бока */}
                                 <img
-                                    src="/owner.png" // Укажи здесь путь к фото (например, положить в папку public)
+                                    src="/owner.png"
                                     alt="Yrityksen johtaja"
-                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+                                    /* 
+                                      scale-110 в hover делает мощный зум, 
+                                      а благодаря отсутствию overflow-hidden на родителе, голова и плечи физически пересекают границы рамки!
+                                    */
+                                    className="absolute bottom-0 w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-120 origin-bottom z-20 pointer-events-none"
                                 />
 
-                                {/* Градиентный слой поверх фото для читаемости текста */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80"></div>
-
-                                {/* Текст поверх изображения */}
-                                <div className="absolute bottom-0 left-0 w-full p-8 text-center">
+                                {/* ТЕКСТ: на самом верхнем слое (z-30) */}
+                                <div className="absolute bottom-0 left-0 w-full p-8 text-center z-30">
                                     <h3 className="text-xl font-bold text-white uppercase tracking-[4px] drop-shadow-lg">
                                         Ammattimuutot
                                     </h3>
