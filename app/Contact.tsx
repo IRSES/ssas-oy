@@ -1,7 +1,15 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Contact() {
+  const router = useRouter();
+  
+  // Создаем стейты для полей первой формы
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
   const openingHours = [
     { day: "Maanantai", time: "10.00 - 17.00" },
     { day: "Tiistai", time: "10.00 - 17.00" },
@@ -11,6 +19,21 @@ export default function Contact() {
     { day: "Lauantai", time: "11.00 - 14.00" },
     { day: "Sunnuntai", time: "Suljettu", special: true },
   ];
+
+  // Функция перенаправления с параметрами
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Кодируем данные в безопасную для URL строку
+    const queryParams = new URLSearchParams({
+      name: name,
+      email: email,
+      message: message
+    }).toString();
+
+    // Перенаправляем на страницу контактов
+    router.push(`/yhteystiedot?${queryParams}`);
+  };
 
   return (
     <section className="py-24 bg-[#0a0a0c] px-6 md:px-16 border-t border-white/5 relative">
@@ -64,12 +87,14 @@ export default function Contact() {
 
           {/* OIKEA PUOLI: Lomake */}
           <div className="bg-white/5 p-8 md:p-10 rounded-3xl border border-white/10 relative overflow-hidden">
-            <form className="space-y-6 relative z-10">
+            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               <div>
                 <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold">Nimi *</label>
                 <input 
                   type="text" 
                   required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-[#3be8e8] outline-none transition"
                   placeholder="Matti Meikäläinen"
                 />
@@ -79,6 +104,8 @@ export default function Contact() {
                 <input 
                   type="email" 
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-[#3be8e8] outline-none transition"
                   placeholder="esimerkki@mail.fi"
                 />
@@ -88,6 +115,8 @@ export default function Contact() {
                 <textarea 
                   rows={4}
                   required
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-[#3be8e8] outline-none transition"
                   placeholder="Kerro muutostasi..."
                 ></textarea>
@@ -100,7 +129,7 @@ export default function Contact() {
                 </label>
               </div>
 
-              <button className="w-full bg-[#3be8e8] hover:bg-[#2dbdbd] text-black font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(59,232,232,0.3)]">
+              <button type="submit" className="w-full bg-[#3be8e8] hover:bg-[#2dbdbd] text-black font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(59,232,232,0.3)]">
                 LÄHETÄ VIESTI
               </button>
             </form>
