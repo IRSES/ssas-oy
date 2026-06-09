@@ -29,12 +29,48 @@ function ContactForm() {
     }, [searchParams]);
 
     // Обработчик финальной отправки на почту
-    const handleFinalSubmit = (e: React.FormEvent) => {
+    const handleFinalSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
-        // Сюда ты можешь вставить логику отправки (например, fetch на твой API /api/send-email)
-        console.log("Отправка на почту:", { name, email, phone, address, city, message });
-        alert("Kiitos! Viesti on lähetetty onnistuneesti.");
+
+        try {
+            const response = await fetch('/api/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    phone,
+                    address,
+                    city,
+                    message
+                }),
+            });
+
+            const result = await response.json();
+
+            // Проверяем и статус ответа, и поле success из твоего API-роута
+            if (response.ok && result.success) {
+                alert("Kiitos! Viesti on lähetetty onnistuneesti.");
+
+                // Очищаем форму после успешной отправки
+                setName('');
+                setEmail('');
+                setPhone('');
+                setAddress('');
+                setCity('');
+                setMessage('');
+            } else {
+                // Если возникла ошибка, выводим её текст. 
+                // Если текста нет, пишем понятную заглушку вместо "undefined"
+                const errorMessage = result.error || "Tuntematon virhe tapahtui.";
+                alert(`Virhe: ${errorMessage}`);
+            }
+        } catch (error) {
+            console.error("Lähetysvirhe:", error);
+            alert("Yhteysvirhe. Tarkista nettiyhteys.");
+        }
     };
 
     return (
@@ -45,58 +81,58 @@ function ContactForm() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input 
-                    type="text" 
-                    placeholder="Etu- ja sukunimi *" 
+                <input
+                    type="text"
+                    placeholder="Etu- ja sukunimi *"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="bg-white/5 border border-white/10 px-5 py-4 rounded-xl focus:border-[#3be8e8] outline-none transition-all placeholder:text-gray-600 text-white" 
-                    required 
+                    className="bg-white/5 border border-white/10 px-5 py-4 rounded-xl focus:border-[#3be8e8] outline-none transition-all placeholder:text-gray-600 text-white"
+                    required
                 />
-                <input 
-                    type="email" 
-                    placeholder="Email *" 
+                <input
+                    type="email"
+                    placeholder="Email *"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="bg-white/5 border border-white/10 px-5 py-4 rounded-xl focus:border-[#3be8e8] outline-none transition-all placeholder:text-gray-600 text-white" 
-                    required 
+                    className="bg-white/5 border border-white/10 px-5 py-4 rounded-xl focus:border-[#3be8e8] outline-none transition-all placeholder:text-gray-600 text-white"
+                    required
                 />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input 
-                    type="tel" 
-                    placeholder="Puhelinnumero *" 
+                <input
+                    type="tel"
+                    placeholder="Puhelinnumero *"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="bg-white/5 border border-white/10 px-5 py-4 rounded-xl focus:border-[#3be8e8] outline-none transition-all placeholder:text-gray-600 text-white" 
-                    required 
+                    className="bg-white/5 border border-white/10 px-5 py-4 rounded-xl focus:border-[#3be8e8] outline-none transition-all placeholder:text-gray-600 text-white"
+                    required
                 />
-                <input 
-                    type="text" 
-                    placeholder="Osoite *" 
+                <input
+                    type="text"
+                    placeholder="Osoite *"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
-                    className="bg-white/5 border border-white/10 px-5 py-4 rounded-xl focus:border-[#3be8e8] outline-none transition-all placeholder:text-gray-600 text-white" 
-                    required 
+                    className="bg-white/5 border border-white/10 px-5 py-4 rounded-xl focus:border-[#3be8e8] outline-none transition-all placeholder:text-gray-600 text-white"
+                    required
                 />
             </div>
 
-            <input 
-                type="text" 
-                placeholder="Kaupunki *" 
+            <input
+                type="text"
+                placeholder="Kaupunki *"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
-                className="w-full bg-white/5 border border-white/10 px-5 py-4 rounded-xl focus:border-[#3be8e8] outline-none transition-all placeholder:text-gray-600 text-white" 
-                required 
+                className="w-full bg-white/5 border border-white/10 px-5 py-4 rounded-xl focus:border-[#3be8e8] outline-none transition-all placeholder:text-gray-600 text-white"
+                required
             />
 
-            <textarea 
-                placeholder="Viesti *" 
-                rows={5} 
+            <textarea
+                placeholder="Viesti *"
+                rows={5}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="w-full bg-white/5 border border-white/10 px-5 py-4 rounded-xl focus:border-[#3be8e8] outline-none transition-all placeholder:text-gray-600 resize-none text-white" 
+                className="w-full bg-white/5 border border-white/10 px-5 py-4 rounded-xl focus:border-[#3be8e8] outline-none transition-all placeholder:text-gray-600 resize-none text-white"
                 required
             ></textarea>
 
@@ -193,7 +229,7 @@ export default function Yhteystiedot() {
                         {/* ФОРМА (ПРАВО) */}
                         <div className="relative group">
                             <div className="absolute -inset-1 bg-gradient-to-r from-[#3be8e8]/20 to-[#1a73e8]/20 rounded-3xl blur-xl opacity-50"></div>
-                            
+
                             {/* Обертываем форму в Suspense, так как используются поисковые URL-параметры */}
                             <Suspense fallback={<div className="text-white text-center p-12 bg-[#0d0d0f]/80 border border-white/10 rounded-3xl backdrop-blur-3xl">Ladataan lomaketta...</div>}>
                                 <ContactForm />
