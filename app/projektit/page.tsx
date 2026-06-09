@@ -118,7 +118,7 @@ export default function Projektit() {
                     <h2 className="text-3xl font-bold mb-4">Onko sinulla haastava muutto edessä?</h2>
                     <p className="text-gray-400 mb-8">Me ratkaisemme vaikeimmatkin logistiset pähkinät ammattitaidolla.</p>
                     <Link
-                        href="/#contact"
+                        href="/yhteystiedot"
                         className="inline-block px-10 py-4 bg-[#3be8e8] text-black font-bold rounded-full hover:shadow-[0_0_20px_rgba(59,232,232,0.5)] transition-all"
                     >
                         OTA YHTEYTTÄ

@@ -119,7 +119,7 @@ export default function Muuttopalvelu() {
                         <p className="text-gray-400 text-sm">Tarjoamme myös erikoispalveluita ja tilapäistä säilytystä sopimuksen mukaan.</p>
                     </div>
                     <Link
-                        href="/#contact"
+                        href="/yhteystiedot"
                         className="px-8 py-4 bg-[#3be8e8] text-black font-bold rounded-xl hover:shadow-[0_0_20px_rgba(59,232,232,0.4)] transition-all whitespace-nowrap"
                     >
                         PYYDÄ TARJOUS
